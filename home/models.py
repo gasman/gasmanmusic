@@ -1,20 +1,44 @@
 from html import unescape
+import json
 import re
 
 from django.db import models
 from django.utils.html import strip_tags
+from modelcluster.fields import ParentalKey
 
 from wagtail.admin import panels
 from wagtail.fields import RichTextField
-from wagtail.models import Page
+from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
+from wagtailmedia.models import Media
+from wagtailmedia.edit_handlers import MediaChooserPanel
 
 
 class HomePage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context["news"] = News.objects.all()
+        context["audio_tracks_json"] = json.dumps([
+            {
+                "title": item.track.title,
+                "file": item.track.url,
+            }
+            for item in self.audio_tracks.select_related('track')
+        ])
         return context
+
+    content_panels = Page.content_panels + [
+        panels.InlinePanel("audio_tracks", label="Audio tracks")
+    ]
+
+
+class HomePageAudioTrack(Orderable):
+    page = ParentalKey(HomePage, related_name="audio_tracks")
+    track = models.ForeignKey(Media, on_delete=models.CASCADE)
+
+    panels = [
+        MediaChooserPanel('track'),
+    ]
 
 
 @register_snippet

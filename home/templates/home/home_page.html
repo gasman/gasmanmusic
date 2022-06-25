@@ -29,36 +29,7 @@
 
 <script>
 AP.init({
-"playList": [
-    {
-        "title": "Gasman - In The Future",
-        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_in_the_future.mp3"
-    },
-    {
-        "title": "Gasman - Dynamite (ninja versus pyrotechnic)",
-        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_dynamite.mp3"
-    },
-    {
-        "title": "Gasman - Spacecake",
-        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_spacecake.mp3"
-    },
-    {
-        "title": "Gasman - Cover Story",
-        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_cover_story.mp3"
-    },
-    {
-        "title": "Gasman - Masterplan",
-        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_masterplan.mp3"
-    },
-    {
-        "title": "Gasman - Dance All Night",
-        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_dance_all_night.mp3"
-    },
-    {
-        "title": "Gasman - Thriller",
-        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_thriller.mp3"
-    }
-]
+    "playList": {{ audio_tracks_json|safe }}
 });
 </script>
 

@@ -15,6 +15,8 @@ from wagtailmedia.edit_handlers import MediaChooserPanel
 
 
 class HomePage(Page):
+    intro = RichTextField(blank=True)
+
     def get_context(self, request):
         context = super().get_context(request)
         context["news"] = News.objects.all()
@@ -28,7 +30,8 @@ class HomePage(Page):
         return context
 
     content_panels = Page.content_panels + [
-        panels.InlinePanel("audio_tracks", label="Audio tracks")
+        panels.FieldPanel("intro"),
+        panels.InlinePanel("audio_tracks", label="Audio tracks"),
     ]
 
 

@@ -1,21 +1,143 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block body_class %}template-homepage{% endblock %}
-
 {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static 'css/audio-player.css' %}">
+{% endblock %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
+{% block extra_js %}
+    <script src="{% static 'js/audio-player.js' %}"></script>
+{% endblock %}
 
 {% block content %}
+<div class="main">
+    <div id='audio-player'></div>
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+    <div class="heading">
+        <h1><img src="{% static 'images/gasman_title.png' %}" alt="Gasman" width="100%"></h1>
+        <h2>the world's number one ZX Spectrum rock star</h2>
+    </div>
+    <div class="panel">
+        <p>Award winning chiptune artist <b>Gasman</b> has rocked dancefloors across Europe with his unique blend of energetic vocal performances, virtuoso keytar synth solos, and the nostalgic square wave sounds of the Sinclair ZX Spectrum.</p>
+    </div>
+
+    <div class='embed-container'>
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLFDQaf5pzu29gFSkInnA61BXwmk5xdnpp" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+<script>
+AP.init({
+"playList": [
+    {
+        "title": "Gasman - In The Future",
+        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_in_the_future.mp3"
+    },
+    {
+        "title": "Gasman - Dynamite (ninja versus pyrotechnic)",
+        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_dynamite.mp3"
+    },
+    {
+        "title": "Gasman - Spacecake",
+        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_spacecake.mp3"
+    },
+    {
+        "title": "Gasman - Cover Story",
+        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_cover_story.mp3"
+    },
+    {
+        "title": "Gasman - Masterplan",
+        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_masterplan.mp3"
+    },
+    {
+        "title": "Gasman - Dance All Night",
+        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_dance_all_night.mp3"
+    },
+    {
+        "title": "Gasman - Thriller",
+        "file": "https://gasman-music.zxdemo.org/2019/gasman_-_thriller.mp3"
+    }
+]
+});
+</script>
+
+<!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{ clear:left; font:14px Helvetica,Arial,sans-serif; border: 1px solid white; margin-top: 1em;}
+/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://zxdemo.us19.list-manage.com/subscribe/post?u=7651a1c30095e92ced8b7fee4&amp;id=027366e3ba" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<div id="mc_embed_signup_scroll">
+<h2>A Gasman album in 2020? Why not! Sign up for updates...</h2>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address </label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+<div id="mce-responses" class="clear">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_7651a1c30095e92ced8b7fee4_027366e3ba" tabindex="-1" value=""></div>
+<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</div>
+</form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+
+    <div class="panel">
+        <h2>Previous adventures</h2>
+        <ul>
+            <li>18 Dec 2019 - Created the music for <a href="https://lexaloffle.com/bbs/?pid=71186">Katamari Christmassy</a>, p01's Pico-8 tribute to Katamari Damacy for #pico8advent</li>
+            <li>7 Dec 2019 - Participated in the YM Rockerz musicdisk <a href="https://www.youtube.com/watch?v=usdCLuJtXMI">Faker Bashing</a>, released at Silly Venture 2019, with a new track <i>To The Ends Of The Earth</i></li>
+            <li>17 Aug 2019 - Released <a href="https://www.youtube.com/watch?v=Xxfv1D_sopM">New School Reunion</a> at <a href="https://2019.evoke.eu/">Evoke 2019</a>, Cologne, DE - a Pico-8 demo in collaboration with Rift, with code by Mantratronic and Gasman, and music by Gasman</li>
+            <li>13 July 2019 - New track <a href="https://demozoo.org/music/206171/">Dance All Night</a> released at <a href="https://www.lostparty.pl/2019/">Lost Party 2019</a>, Licheń Stary, PL</li>
+            <li>1 June 2019 - Released <a href="https://www.youtube.com/watch?v=_p3asKU9YIU">Carcharodon Minor</a> at <a href="http://outlinedemoparty.nl/">Outline 2019</a>, Willemsoord, NL - Baby Shark but it's coded in 128 bytes on the ZX Spectrum...</li>
+            <li>21 April 2019 - Two Spectrum releases at <a href="https://2019.revision-party.net/">Revision 2019</a>, Saarbrücken, DE - <a href="https://www.youtube.com/watch?v=DgNGVoQcN-Y">The Brexecutable Music Compo Is Over</a>, an anti-Brexit message to the European demoscene, and <a href="https://www.youtube.com/watch?v=mgXRXDfQ0xw">Megademica</a>, an epic 8-minute 4K megademo coded by SerzhSoft with music by Gasman</li>
+            <li>16 March 2019 - New track <a href="https://demozoo.org/music/201077/">Tim Will Rock You</a> released at <a href="http://forever8.net/">Forever 2019</a>, Horná Súča, SK - a combined tribute to Tim Follin and Queen</li>
+            <li>16 Feb 2019 - Live set at <a href="https://hackerhotel.nl/">Hackerhotel 2019</a>, Garderen, NL</li>
+            <li>28 Dec 2018 - Created the <a href="https://twitter.com/gasmanic/status/1079164419488268288">QR code easter egg and playable Nohzdyve game</a> for <i>Black Mirror: Bandersnatch</i>!</li>
+            <li>8 Dec 2018 - Live set at <a href="https://www.facebook.com/events/340019166565812/">Until It Bleeps</a>, London, UK</li>
+            <li>7 Nov 2018 - <a href="http://www.retroaccion.org/retroconciertazo-rocknmidi">Live set at RetroMañía 2018</a>, Zaragoza, ES</li>
+            <li>20 Oct 2018 - New track <a href="https://demozoo.org/music/194800/">Dynamite (ninja versus pyrotechnic)</a> released at <a href="http://trsac.dk/">TRSAC 2018</a>, Århus, DK</li>
+            <li>2 Sept 2018 - Live set at <a href="https://www.emfcamp.org/">Electromagnetic Field</a>, Eastnor, UK, and the unveiling of <a href="http://gasman.zxdemo.org/speczilla/">a giant working foam ZX Spectrum</a>...</li>
+            <li>20 June 2018 - Released <a href="https://demozoo.org/productions/188679/">Buttercream Sputnik</a> at <a href="http://www.novaparty.org/">NOVA 2018</a>, Budleigh Salterton, UK - a Spectrum demo featuring a new graphics mode and a chiptune cover of <i>Little Fluffy Clouds</i> by The Orb</li>
+            <li>31 March 2018 - New track <a href="https://demozoo.org/music/185141/">Cover Story</a> released at <a href="https://2018.revision-party.net/">Revision 2018</a>, Saarbrücken, DE</li>
+            <li>5 Aug 2017 - Presentation <a href="https://www.youtube.com/watch?v=7OYoEyU0g4s">Zero to chiptune in one hour</a> at SHA2017, Zeewolde, NL - creating <a href="https://soundcloud.com/matt-westcott/the-archers">a chiptune cover of the theme from <i>The Archers</i></a> live on stage :-)</li>
+            <li>23 June 2017 - Live set at <a href="http://www.novaparty.org/">NOVA 2017</a>, Budleigh Salterton, UK</li>
+            <li>27 May 2017 - Released <a href="https://www.youtube.com/watch?v=FLz9jf2qtgc">Sandstorm</a> at <a href="http://outlinedemoparty.nl/">Outline 2017</a>, Willemsoord, NL - a ZX Spectrum lyrical take on the Darude dancefloor anthem...</li>
+            <li>18 March 2017 - Released <a href="https://www.youtube.com/watch?v=Ca5-ihTeYxw">Ultraviolet</a> at <a href="http://forever8.net/">Forever 2017</a>, Horná Súča, SK - a boundary-pushing ZX Spectrum megademo with an all-new Gasman soundtrack!</li>
+            <li>6-7 Aug 2016 - Two live sets at <a href="https://www.emfcamp.org/">Electromagnetic Field</a>, Guildford, UK - solo and head-to-head with <a href="http://2xaa.fm/">2xAA</a>!</li>
+            <li>16 July 2016 - Released <a href="https://www.youtube.com/watch?v=EY-cnqIaIkI">In The Future</a> at Sundown demo party, Budleigh Salterton, UK - a song and ZX Spectrum music video about our continuing lack of jetpacks</li>
+            <li>6 May 2016 - Live set at <a href="http://outlinedemoparty.nl/">Outline demoparty</a>, Willemsord, NL</li>
+            <li>26 March 2016 - Released <a href="https://www.youtube.com/watch?v=D9eduiQPY_c">Harder, Better, Manic, Miner</a> at Revision demo party, Saarbrucken, DE - a ZX Spectrum tribute to Daft Punk and Manic Miner in under 4K of code</li>
+            <li>19 March 2016 - New track <a href="https://demozoo.org/music/154614/">Worlds Apart</a> released at Forever demo party, Horná Súča, SK</li>
+            <li>10 Sept 2015 - Open stage set at SuperByte Festival, Manchester, UK</li>
+            <li>14 Aug 2015 - Concert at Chaos Communication Camp, Zehdenick, DE</li>
+            <li>8 Aug 2015 - The new <a href="http://www.zxvega.co.uk">Sinclair ZX Spectrum Vega</a> computer features a new Gasman track <i>Awakening</i> on the game selection menu!</li>
+            <li>24 Jul 2015 - Concert at Euskal Encounter, Bilbao, ES - <a href="http://www.retroaccion.org/retroconciertazo-chiptune-wars">videos / photos</a></li>
+            <li>19 Jul 2015 - <a href="http://chipmusic.org/forums/post/232659/#p232659">New track <i>Masterplan</i> released</a>, as part of the WeeklyTreats project</li>
+            <li>14 May 2015 - Concert at Outline demoparty, Willemsord, NL - <a href="https://www.youtube.com/watch?v=5hYM0s96Y24">video</a></li>
+            <li>14 March 2015 - <a href="http://www.youtube.com/watch?v=LxPXLIALJJI"><i>The Mahler Project</i></a> released, a documentary about the <i>Geek Out!</i> event - <a href="http://matt.west.co.tt/spectrum/the-mahler-project/">blog</a></li>
+            <li>6 Dec 2014 - <i>Geek Out!</i> retrocomputing event at the Museum of the History of Science, Oxford, UK, featuring Gasman's attempt to solve a 30 year old programming challenge by performing Mahler's First Symphony on 12 networked ZX Spectrums...</li>
+            <li>7 Nov 2014 - Concert at Kindergarden demoparty, Haga, NO</li>
+            <li>28 Oct 2014 - New album <a href="http://yerzmyey.i-demo.pl/"><i>Chiptunes</i> by Yerzmyey</a> released, featuring the guest track <i>Spacecake</i> by Gasman</li>
+            <li>3 Oct 2014 - Concert at Deadline demoparty, Berlin, DE</li>
+            <li>29-31 Aug 2014 - Concert and closing set at Electromagnetic Field, Newton Longville, UK - <a href="https://www.youtube.com/watch?v=kTmA445jbeI">video</a></li>
+        </ul>
+    </div>
+    <div class="panel">
+        <h2>Get in touch</h2>
+        <ul>
+            <li><a href="https://twitter.com/gasmanic">@gasmanic</a></li>
+            <li><a href="mailto:g&#97;sman@r&#97;ww.org">g&#97;sman@r&#97;ww.org</a></li>
+        </ul>
+    </div>
+    <p class="credit">&copy; 2017 Matt Westcott. Photo by Chris O'Neill</p>
+</div>
 
 {% endblock content %}

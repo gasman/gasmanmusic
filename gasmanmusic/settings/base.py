@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "wagtailmedia",
     "modelcluster",
     "taggit",
+    "wagtail_freezer",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -168,3 +169,5 @@ WAGTAILSEARCH_BACKENDS = {
 WAGTAILADMIN_BASE_URL = "http://example.com"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+FREEZER_BUILD_DIR = os.path.join(BASE_DIR, "build")

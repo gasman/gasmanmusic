@@ -21,11 +21,14 @@ class Command(BaseCommand):
 
         static_assets_url = getattr(settings, "STATIC_URL", "")
         copy_static_assets = static_assets_url.startswith("/")
+        media_url = getattr(settings, "MEDIA_URL", "")
+        copy_media = media_url.startswith("/")
 
         sites = Site.objects.all()
 
         for site in sites:
             static_assets = set()
+            media = set()
             site_static_root = static_root / site.hostname
             rmtree(site_static_root, ignore_errors=True)
 
@@ -59,13 +62,15 @@ class Command(BaseCommand):
                 with (page_path / "index.html").open(mode='wb') as f:
                     f.write(response.content)
 
-                if copy_static_assets:
+                if copy_static_assets or copy_media:
                     soup = BeautifulSoup(response.content, "html.parser")
                     for elem in soup.find_all(lambda tag:('href' in tag.attrs or 'src' in tag.attrs)):
                         for attr in ('href', 'src'):
                             url = elem.get(attr, "")
                             if url.startswith(static_assets_url):
                                 static_assets.add(url[len(static_assets_url):])
+                            elif url.startswith(media_url):
+                                media.add(url[len(media_url):])
 
             if static_assets:
                 destination_base_path = site_static_root / static_assets_url[1:]
@@ -75,3 +80,13 @@ class Command(BaseCommand):
                         destination_path = destination_base_path / asset_path
                         destination_path.parent.mkdir(parents=True, exist_ok=True)
                         copyfile(source_file, destination_path)
+
+            if media:
+                destination_base_path = site_static_root / media_url[1:]
+                media_root = Path(settings.MEDIA_ROOT)
+                for media_path in media:
+                    source_path = media_root / media_path
+                    if source_path.is_file():
+                        destination_path = destination_base_path / media_path
+                        destination_path.parent.mkdir(parents=True, exist_ok=True)
+                        copyfile(source_path, destination_path)

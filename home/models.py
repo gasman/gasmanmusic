@@ -29,6 +29,13 @@ class HomePage(Page):
         ])
         return context
 
+    @property
+    def freezer_follow_urls(self):
+        urls = ['/static/images/gasman_revision2014.jpg']
+        for item in self.audio_tracks.select_related('track'):
+            urls.append(item.track.url)
+        return urls
+
     content_panels = Page.content_panels + [
         panels.FieldPanel("intro"),
         panels.InlinePanel("audio_tracks", label="Audio tracks"),

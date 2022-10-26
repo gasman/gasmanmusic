@@ -9,7 +9,7 @@ class ArticlePage(Page):
     body = StreamField([
         ("paragraph", blocks.RichTextBlock()),
         ("embed", blocks.RawHTMLBlock()),
-        ("image", ImageChooserBlock()),
+        ("image", ImageChooserBlock(template="articles/blocks/image.html")),
     ])
 
     content_panels = Page.content_panels + [

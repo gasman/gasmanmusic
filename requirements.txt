@@ -4,3 +4,4 @@ psycopg2-binary>=2.9.3,<3.0
 wagtailmedia>=0.10,<0.11
 beautifulsoup4>=4.9,<5.0
 awscli>=1.25,<2.0
+wagtail-freezer>=0.1,<0.2
